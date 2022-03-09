@@ -16,7 +16,7 @@
 
 ## About GuessTheNumber
 
-This is a simple console guess the number game made by @CMDR-JohnAlex.
+This is a simple console guess the number game made by CMDR-JohnAlex.
 
 ## Documentation
 
