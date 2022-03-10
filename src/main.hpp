@@ -18,12 +18,11 @@ private:
 	// Private members of a class A are not accessible outside of A's code, or from the code of any class derived from A.
 	int nRangeLow = 1;
 	int nRangeHigh = NULL;
+	int nAmountOfTries = NULL;
 	int nRandNum = NULL;
 	int nUserGuess = NULL;
-	int nAmountOfTries = NULL;
-	std::string sSingleplayerDifficulty = NULL;
+	std::string sSingleplayerDifficulty;
 	bool bGuessLoop = NULL;
-	std::string gameMode;
 
 	enum class eDifficultyMode
 	{
@@ -48,7 +47,8 @@ public:
 	// Public Variables/Functions
 	// Public members of a class A are accessible for all and everyone.
 	int nUserInput = NULL;
-	
+
+
 	enum class eGameModes
 	{
 		Singleplayer = 1,
