@@ -21,7 +21,7 @@ private:
 	int nAmountOfTries = NULL;
 	int nRandNum = NULL;
 	int nUserGuess = NULL;
-	std::string sSingleplayerDifficulty;
+	std::string sSinglePlayerDifficulty;
 	bool bGuessLoop = NULL;
 
 	enum class eDifficultyMode
@@ -51,12 +51,12 @@ public:
 
 	enum class eGameModes
 	{
-		Singleplayer = 1,
-		Multiplayer = 2
+		SinglePlayer = 1,
+		MultiPlayer = 2
 	};
 
-	int singleplayerGame();
-	int multiplayerGame();
+	int singlePlayerGame();
+	int multiPlayerGame();
 	void clearScreen();
 };
 

@@ -42,17 +42,17 @@ int main(int argc, char* argv[])
 		mainClass.clearScreen();
 		std::cout << "Welcome to Guess The Number Game!\n\n";
 
-		std::cout << "Choose a number: #1 Singleplayer, #2 Multiplayer, #0 Quit: ";
+		std::cout << "Choose a number: #1 Single player, #2 Multi player, #0 Quit: ";
 		std::cin >> mainClass.nUserInput;
 		mainClass.clearScreen();
 
 		switch (static_cast<MainClass::eGameModes>(mainClass.nUserInput))
 		{
-		case MainClass::eGameModes::Singleplayer:
-			mainClass.singleplayerGame();
+		case MainClass::eGameModes::SinglePlayer:
+			mainClass.singlePlayerGame();
 			break;
-		case MainClass::eGameModes::Multiplayer:
-			mainClass.multiplayerGame();
+		case MainClass::eGameModes::MultiPlayer:
+			mainClass.multiPlayerGame();
 			break;
 		default:
 			return 0;
@@ -62,11 +62,11 @@ int main(int argc, char* argv[])
 	return 0;
 }
 
-int MainClass::singleplayerGame()
+int MainClass::singlePlayerGame()
 {
 	while (true)
 	{
-		std::cout << "Welcome to Guess The Number Game Singleplayer!\n\n";
+		std::cout << "Welcome to Guess The Number game single player!\n\n";
 
 		std::cout << "Easy High score: " << NULL << " tries Range: " << mainClass.nRangeLow << " to: " << static_cast<int>(MainClass::eRangeHigh::Easy) << '\n';
 		std::cout << "Normal High score: " << NULL << " tries Range: " << mainClass.nRangeLow << " to: " << static_cast<int>(MainClass::eRangeHigh::Normal) << '\n';
@@ -81,19 +81,19 @@ int MainClass::singleplayerGame()
 		{
 		case MainClass::eDifficultyMode::Easy:
 			mainClass.nRangeHigh = static_cast<int>(MainClass::eRangeHigh::Easy);
-			mainClass.sSingleplayerDifficulty = "easyMode";
+			mainClass.sSinglePlayerDifficulty = "easyMode";
 			break;
 		case MainClass::eDifficultyMode::Normal:
 			mainClass.nRangeHigh = static_cast<int>(MainClass::eRangeHigh::Normal);
-			mainClass.sSingleplayerDifficulty = "NormalMode";
+			mainClass.sSinglePlayerDifficulty = "NormalMode";
 			break;
 		case MainClass::eDifficultyMode::Hard:
 			mainClass.nRangeHigh = static_cast<int>(MainClass::eRangeHigh::Hard);
-			mainClass.sSingleplayerDifficulty = "hardMode";
+			mainClass.sSinglePlayerDifficulty = "hardMode";
 			break;
 		case MainClass::eDifficultyMode::MEGA:
 			mainClass.nRangeHigh = static_cast<int>(MainClass::eRangeHigh::MEGA);
-			mainClass.sSingleplayerDifficulty = "megaMode";
+			mainClass.sSinglePlayerDifficulty = "megaMode";
 			break;
 		default:
 			return 0;
@@ -149,9 +149,9 @@ int MainClass::singleplayerGame()
 	return 0;
 }
 
-int MainClass::multiplayerGame()
+int MainClass::multiPlayerGame()
 {
-	std::cout << "Sorry, multiplayer is not ready yet!\n";
+	std::cout << "Sorry, multi player is not ready yet!\n";
 	std::this_thread::sleep_for(std::chrono::milliseconds(3000));
 	return 0;
 }
