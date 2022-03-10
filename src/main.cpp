@@ -20,22 +20,21 @@ int main(int argc, char* argv[])
 	|__|  |_| |___|___|___|  |___|_|_|_| |___|_|    |_| |___|  |___|___|_|_|_| |_|_|_|___|___|
 	https://patorjk.com/software/taag/#p=display&f=Rectangles&t=Press%20enter%20to%20continue%0A
 	*/
-
-	std::cout << " _____                       _____ _            _   _                 _						\n";
-	std::cout << "|  __ \\                     |_   _| |          | \\ | |               | |					\n";
-	std::cout << "| |  \\/_   _  ___  ___ ___    | | | |__   ___  |  \\| |_   _ _ __ ___ | |__   ___ _ __		\n";
-	std::cout << "| | __| | | |/ _ \\/ __/ __|   | | | '_ \\ / _ \\ | . ` | | | | '_ ` _ \\| '_ \\ / _ \\ '__|	\n";
-	std::cout << "| |_\\ \\ |_| |  __/\\__ \\__ \\   | | | | | |  __/ | |\\  | |_| | | | | | | |_) |  __/ |		\n";
-	std::cout << " \\____/\\__,_|\\___||___/___/   \\_/ |_| |_|\\___| \\_| \\_/\\__,_|_| |_| |_|_.__/ \\___|_|	\n";
+	std::cout << " _____                       _____ _            _   _                 _					   \n";
+	std::cout << "|  __ \\                     |_   _| |          | \\ | |               | |				   \n";
+	std::cout << "| |  \\/_   _  ___  ___ ___    | | | |__   ___  |  \\| |_   _ _ __ ___ | |__   ___ _ __	   \n";
+	std::cout << "| | __| | | |/ _ \\/ __/ __|   | | | '_ \\ / _ \\ | . ` | | | | '_ ` _ \\| '_ \\ / _ \\ '__| \n";
+	std::cout << "| |_\\ \\ |_| |  __/\\__ \\__ \\   | | | | | |  __/ | |\\  | |_| | | | | | | |_) |  __/ |	   \n";
+	std::cout << " \\____/\\__,_|\\___||___/___/   \\_/ |_| |_|\\___| \\_| \\_/\\__,_|_| |_| |_|_.__/ \\___|_| \n";
 	std::cout << '\n';
-	std::cout << "                      _____                            _           \n";
-	std::cout << "                     |  _  |___ ___ ___ ___    ___ ___| |_ ___ ___ \n";
-	std::cout << "                     |   __|  _| -_|_ -|_ -|  | -_|   |  _| -_|  _|\n";
-	std::cout << "                     |__|  |_| |___|___|___|  |___|_|_|_| |___|_|  \n";
-	std::cout << "                       _                      _   _             \n";
-	std::cout << "                      | |_ ___    ___ ___ ___| |_|_|___ _ _ ___ \n";
-	std::cout << "                      |  _| . |  |  _| . |   |  _| |   | | | -_|\n";
-	std::cout << "                      |_| |___|  |___|___|_|_|_| |_|_|_|___|___|\n";
+	std::cout << "                        _____                            _                                   \n";
+	std::cout << "                       |  _  |___ ___ ___ ___    ___ ___| |_ ___ ___                         \n";
+	std::cout << "                       |   __|  _| -_|_ -|_ -|  | -_|   |  _| -_|  _|                        \n";
+	std::cout << "                       |__|  |_| |___|___|___|  |___|_|_|_| |___|_|                          \n";
+	std::cout << "                         _                      _   _                                        \n";
+	std::cout << "                        | |_ ___    ___ ___ ___| |_|_|___ _ _ ___                            \n";
+	std::cout << "                        |  _| . |  |  _| . |   |  _| |   | | | -_|                           \n";
+	std::cout << "                        |_| |___|  |___|___|_|_|_| |_|_|_|___|___|                           \n";
 	std::getchar();
 
 	while (true)
@@ -44,15 +43,15 @@ int main(int argc, char* argv[])
 		std::cout << "Welcome to Guess The Number Game!\n\n";
 
 		std::cout << "Choose a number: #1 Singleplayer, #2 Multiplayer, #0 Quit: ";
-		std::cin >> mainClass.userInput;
+		std::cin >> mainClass.nUserInput;
 		mainClass.clearScreen();
 
-		switch (static_cast<MainClass::gameModes>(mainClass.userInput))
+		switch (static_cast<MainClass::eGameModes>(mainClass.nUserInput))
 		{
-		case MainClass::gameModes::Singleplayer:
+		case MainClass::eGameModes::Singleplayer:
 			mainClass.singleplayerGame();
 			break;
-		case MainClass::gameModes::Multiplayer:
+		case MainClass::eGameModes::Multiplayer:
 			mainClass.multiplayerGame();
 			break;
 		default:
@@ -69,41 +68,42 @@ int MainClass::singleplayerGame()
 	{
 		std::cout << "Welcome to Guess The Number Game Singleplayer!\n\n";
 
-		std::cout << "Easy High score: " << NULL << " tries Range: " << mainClass.rangeLow << " to: " << static_cast<int>(MainClass::rangeHigh::Easy) << '\n';
-		std::cout << "Normal High score: " << NULL << " tries Range: " << mainClass.rangeLow << " to: " << static_cast<int>(MainClass::rangeHigh::Normal) << '\n';
-		std::cout << "Hard High score: " << NULL << " tries Range: " << mainClass.rangeLow << " to: " << static_cast<int>(MainClass::rangeHigh::Hard) << '\n';
-		std::cout << "MEGA High score: " << NULL << " tries Range: " << mainClass.rangeLow << " to: " << static_cast<int>(MainClass::rangeHigh::MEGA) << '\n';
+		std::cout << "Easy High score: " << NULL << " tries Range: " << mainClass.nRangeLow << " to: " << static_cast<int>(MainClass::eRangeHigh::Easy) << '\n';
+		std::cout << "Normal High score: " << NULL << " tries Range: " << mainClass.nRangeLow << " to: " << static_cast<int>(MainClass::eRangeHigh::Normal) << '\n';
+		std::cout << "Hard High score: " << NULL << " tries Range: " << mainClass.nRangeLow << " to: " << static_cast<int>(MainClass::eRangeHigh::Hard) << '\n';
+		std::cout << "MEGA High score: " << NULL << " tries Range: " << mainClass.nRangeLow << " to: " << static_cast<int>(MainClass::eRangeHigh::MEGA) << '\n';
 
 		std::cout << "\nChoose a number: #1 Easy, #2 Normal, #3 Hard, #4 MEGA, #0 Back: ";
-		std::cin >> mainClass.userInput;
+		std::cin >> mainClass.nUserInput;
 
 
-		switch (static_cast<MainClass::difficultyMode>(mainClass.userInput))
+		switch (static_cast<MainClass::eDifficultyMode>(mainClass.nUserInput))
 		{
-		case MainClass::difficultyMode::Easy:
-			mainClass.rangeHigh = static_cast<int>(MainClass::rangeHigh::Easy);
-			mainClass.singleplayerGameMode = "easyMode";
+		case MainClass::eDifficultyMode::Easy:
+			mainClass.nRangeHigh = static_cast<int>(MainClass::eRangeHigh::Easy);
+			mainClass.sSingleplayerDifficulty = "easyMode";
 			break;
-		case MainClass::difficultyMode::Normal:
-			mainClass.rangeHigh = static_cast<int>(MainClass::rangeHigh::Normal);
-			mainClass.singleplayerGameMode = "NormalMode";
+		case MainClass::eDifficultyMode::Normal:
+			mainClass.nRangeHigh = static_cast<int>(MainClass::eRangeHigh::Normal);
+			mainClass.sSingleplayerDifficulty = "NormalMode";
 			break;
-		case MainClass::difficultyMode::Hard:
-			mainClass.rangeHigh = static_cast<int>(MainClass::rangeHigh::Hard);
-			mainClass.singleplayerGameMode = "hardMode";
+		case MainClass::eDifficultyMode::Hard:
+			mainClass.nRangeHigh = static_cast<int>(MainClass::eRangeHigh::Hard);
+			mainClass.sSingleplayerDifficulty = "hardMode";
 			break;
-		case MainClass::difficultyMode::MEGA:
-			mainClass.rangeHigh = static_cast<int>(MainClass::rangeHigh::MEGA);
-			mainClass.singleplayerGameMode = "megaMode";
+		case MainClass::eDifficultyMode::MEGA:
+			mainClass.nRangeHigh = static_cast<int>(MainClass::eRangeHigh::MEGA);
+			mainClass.sSingleplayerDifficulty = "megaMode";
 			break;
 		default:
 			return 0;
 			break;
 		}
-		mainClass.amountOfTries = 0;
-		mainClass.guessLoop = true;
-		std::cout << "\nRange is from " << mainClass.rangeLow << " to " << mainClass.rangeHigh << '\n';
+		mainClass.nAmountOfTries = 0;
+		mainClass.bGuessLoop = true;
+		std::cout << "\nRange is from " << mainClass.nRangeLow << " to " << mainClass.nRangeHigh << '\n';
 
+		// Yeah, this is dumb, people might hate this
 		std::cout << "Thinking of a number";
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		std::cout << ".";
@@ -111,30 +111,31 @@ int MainClass::singleplayerGame()
 		std::cout << ".";
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		std::cout << ".\n\n";
+
 		// Get Random Number
 		std::random_device dev; // for seeding
 		std::default_random_engine gen{ dev() };
-		std::uniform_int_distribution<int> dis{ mainClass.rangeLow, mainClass.rangeHigh };
-		mainClass.randNum = dis(gen);
+		std::uniform_int_distribution<int> dis{ mainClass.nRangeLow, mainClass.nRangeHigh };
+		mainClass.nRandNum = dis(gen);
 
-		while (mainClass.guessLoop == true)
+		while (mainClass.bGuessLoop == true)
 		{
 			std::cout << "Guess the number: ";
-			std::cin >> mainClass.userGuess;
-			mainClass.amountOfTries++;
-			if (mainClass.userGuess > mainClass.randNum)
+			std::cin >> mainClass.nUserGuess;
+			mainClass.nAmountOfTries++;
+			if (mainClass.nUserGuess > mainClass.nRandNum)
 			{
-				std::cout << "The number is lower than " << mainClass.userGuess << '\n';
+				std::cout << "The number is lower than " << mainClass.nUserGuess << '\n';
 			}
-			else if (mainClass.userGuess < mainClass.randNum)
+			else if (mainClass.nUserGuess < mainClass.nRandNum)
 			{
-				std::cout << "The number is higher than " << mainClass.userGuess << '\n';
+				std::cout << "The number is higher than " << mainClass.nUserGuess << '\n';
 			}
 			else
 			{
 				mainClass.clearScreen();
-				std::cout << "Congratulations, the number is " << mainClass.randNum << " you have tried " << mainClass.amountOfTries << " times\n\n";
-				mainClass.guessLoop = false;
+				std::cout << "Congratulations, the number is " << mainClass.nRandNum << " you have tried " << mainClass.nAmountOfTries << " times\n\n";
+				mainClass.bGuessLoop = false;
 
 				/*
 				if (mainClass.amountOfTries <= "high score tries" || "high score tries" == 0)
