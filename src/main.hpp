@@ -16,15 +16,15 @@ class MainClass
 private:
 	// Private Variables/Functions
 	// Private members of a class A are not accessible outside of A's code, or from the code of any class derived from A.
-	int nRangeLow = 1;
-	int nRangeHigh = NULL;
-	int nAmountOfTries = NULL;
-	int nRandNum = NULL;
-	int nUserGuess = NULL;
-	std::string sSinglePlayerDifficulty;
-	bool bGuessLoop = NULL;
+	int rangeLow = 1;
+	int rangeHigh = 0;
+	int amountOfTries = 0;
+	int randNum = 0;
+	int userGuess = 0;
+	std::string singlePlayerDifficulty;
+	bool guessLoop = false;
 
-	enum class eDifficultyMode
+	enum class difficultyMode
 	{
 		Easy = 1,
 		Normal = 2,
@@ -32,7 +32,7 @@ private:
 		MEGA = 4
 	};
 
-	enum class eRangeHigh
+	enum class guessRange
 	{
 		Easy = 10,
 		Normal = 100,
@@ -46,17 +46,17 @@ protected:
 public:
 	// Public Variables/Functions
 	// Public members of a class A are accessible for all and everyone.
-	int nUserInput = NULL;
+	int userInput = NULL;
 
 
-	enum class eGameModes
+	enum class gameModes
 	{
 		SinglePlayer = 1,
 		MultiPlayer = 2
 	};
 
-	int singlePlayerGame();
-	int multiPlayerGame();
+	void singlePlayerGame();
+	void multiPlayerGame();
 	void clearScreen();
 };
 

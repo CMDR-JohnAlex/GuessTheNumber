@@ -1,4 +1,5 @@
 // JOHN ALEXANDER LE ROUX
+// TODO: https://discord.com/channels/331718482485837825/951282415349956638
 #include "main.hpp"
 
 MainClass mainClass;
@@ -37,71 +38,74 @@ int main(int argc, char* argv[])
 	std::cout << "                        |_| |___|  |___|___|_|_|_| |_|_|_|___|___|                           \n";
 	std::getchar();
 
+
+
 	while (true)
 	{
 		mainClass.clearScreen();
 		std::cout << "Welcome to Guess The Number Game!\n\n";
 
 		std::cout << "Choose a number: #1 Single player, #2 Multi player, #0 Quit: ";
-		std::cin >> mainClass.nUserInput;
+		std::cin >> mainClass.userInput;
 		mainClass.clearScreen();
 
-		switch (static_cast<MainClass::eGameModes>(mainClass.nUserInput))
+		switch (static_cast<MainClass::gameModes>(mainClass.userInput))
 		{
-		case MainClass::eGameModes::SinglePlayer:
-			mainClass.singlePlayerGame();
+		case MainClass::gameModes::SinglePlayer: mainClass.singlePlayerGame();
 			break;
-		case MainClass::eGameModes::MultiPlayer:
-			mainClass.multiPlayerGame();
+		case MainClass::gameModes::MultiPlayer: mainClass.multiPlayerGame();
 			break;
-		default:
-			return 0;
-			break;
+		default: return 0;
 		}
 	}
 	return 0;
 }
 
-int MainClass::singlePlayerGame()
+void MainClass::singlePlayerGame()
 {
+	// Get Random Number
+	std::random_device dev; // for seeding
+	std::default_random_engine gen{ dev() };
+	// std::uniform_int_distribution<int> dis{ mainClass.rangeLow, mainClass.rangeHigh };
+	// mainClass.randNum = dis(gen);
+
 	while (true)
 	{
 		std::cout << "Welcome to Guess The Number game single player!\n\n";
 
-		std::cout << "Easy High score: " << NULL << " tries Range: " << mainClass.nRangeLow << " to: " << static_cast<int>(MainClass::eRangeHigh::Easy) << '\n';
-		std::cout << "Normal High score: " << NULL << " tries Range: " << mainClass.nRangeLow << " to: " << static_cast<int>(MainClass::eRangeHigh::Normal) << '\n';
-		std::cout << "Hard High score: " << NULL << " tries Range: " << mainClass.nRangeLow << " to: " << static_cast<int>(MainClass::eRangeHigh::Hard) << '\n';
-		std::cout << "MEGA High score: " << NULL << " tries Range: " << mainClass.nRangeLow << " to: " << static_cast<int>(MainClass::eRangeHigh::MEGA) << '\n';
+		std::cout << "Easy High score: " << "NULL" << " tries Range: " << mainClass.rangeLow << " to: " << static_cast<int>(MainClass::guessRange::Easy) << '\n';
+		std::cout << "Normal High score: " << "NULL" << " tries Range: " << mainClass.rangeLow << " to: " << static_cast<int>(MainClass::guessRange::Normal) << '\n';
+		std::cout << "Hard High score: " << "NULL" << " tries Range: " << mainClass.rangeLow << " to: " << static_cast<int>(MainClass::guessRange::Hard) << '\n';
+		std::cout << "MEGA High score: " << "NULL" << " tries Range: " << mainClass.rangeLow << " to: " << static_cast<int>(MainClass::guessRange::MEGA) << '\n';
 
 		std::cout << "\nChoose a number: #1 Easy, #2 Normal, #3 Hard, #4 MEGA, #0 Back: ";
-		std::cin >> mainClass.nUserInput;
+		std::cin >> mainClass.userInput;
 
 
-		switch (static_cast<MainClass::eDifficultyMode>(mainClass.nUserInput))
+		switch (static_cast<difficultyMode>(mainClass.userInput))
 		{
-		case MainClass::eDifficultyMode::Easy:
-			mainClass.nRangeHigh = static_cast<int>(MainClass::eRangeHigh::Easy);
-			mainClass.sSinglePlayerDifficulty = "easyMode";
+		case difficultyMode::Easy:
+			mainClass.rangeHigh = static_cast<int>(MainClass::guessRange::Easy);
+			mainClass.singlePlayerDifficulty = "easyMode";
 			break;
-		case MainClass::eDifficultyMode::Normal:
-			mainClass.nRangeHigh = static_cast<int>(MainClass::eRangeHigh::Normal);
-			mainClass.sSinglePlayerDifficulty = "NormalMode";
+		case difficultyMode::Normal:
+			mainClass.rangeHigh = static_cast<int>(MainClass::guessRange::Normal);
+			mainClass.singlePlayerDifficulty = "NormalMode";
 			break;
-		case MainClass::eDifficultyMode::Hard:
-			mainClass.nRangeHigh = static_cast<int>(MainClass::eRangeHigh::Hard);
-			mainClass.sSinglePlayerDifficulty = "hardMode";
+		case difficultyMode::Hard:
+			mainClass.rangeHigh = static_cast<int>(MainClass::guessRange::Hard);
+			mainClass.singlePlayerDifficulty = "hardMode";
 			break;
-		case MainClass::eDifficultyMode::MEGA:
-			mainClass.nRangeHigh = static_cast<int>(MainClass::eRangeHigh::MEGA);
-			mainClass.sSinglePlayerDifficulty = "megaMode";
+		case difficultyMode::MEGA:
+			mainClass.rangeHigh = static_cast<int>(MainClass::guessRange::MEGA);
+			mainClass.singlePlayerDifficulty = "megaMode";
 			break;
-		default:
-			return 0;
+		default: return;
 			break;
 		}
-		mainClass.nAmountOfTries = 0;
-		mainClass.bGuessLoop = true;
-		std::cout << "\nRange is from " << mainClass.nRangeLow << " to " << mainClass.nRangeHigh << '\n';
+		mainClass.amountOfTries = 0;
+		mainClass.guessLoop = true;
+		std::cout << "\nRange is from " << mainClass.rangeLow << " to " << mainClass.rangeHigh << '\n';
 
 		// Yeah, this is dumb, people might hate this
 		std::cout << "Thinking of a number";
@@ -113,29 +117,29 @@ int MainClass::singlePlayerGame()
 		std::cout << ".\n\n";
 
 		// Get Random Number
-		std::random_device dev; // for seeding
-		std::default_random_engine gen{ dev() };
-		std::uniform_int_distribution<int> dis{ mainClass.nRangeLow, mainClass.nRangeHigh };
-		mainClass.nRandNum = dis(gen);
+		// std::random_device dev; // for seeding
+		// std::default_random_engine gen{ dev() };
+		std::uniform_int_distribution<int> dis{ mainClass.rangeLow, mainClass.rangeHigh };
+		mainClass.randNum = dis(gen);
 
-		while (mainClass.bGuessLoop == true)
+		while (mainClass.guessLoop == true)
 		{
 			std::cout << "Guess the number: ";
-			std::cin >> mainClass.nUserGuess;
-			mainClass.nAmountOfTries++;
-			if (mainClass.nUserGuess > mainClass.nRandNum)
+			std::cin >> mainClass.userGuess;
+			mainClass.amountOfTries++;
+			if (mainClass.userGuess > mainClass.randNum)
 			{
-				std::cout << "The number is lower than " << mainClass.nUserGuess << '\n';
+				std::cout << "The number is lower than " << mainClass.userGuess << '\n';
 			}
-			else if (mainClass.nUserGuess < mainClass.nRandNum)
+			else if (mainClass.userGuess < mainClass.randNum)
 			{
-				std::cout << "The number is higher than " << mainClass.nUserGuess << '\n';
+				std::cout << "The number is higher than " << mainClass.userGuess << '\n';
 			}
 			else
 			{
 				mainClass.clearScreen();
-				std::cout << "Congratulations, the number is " << mainClass.nRandNum << " you have tried " << mainClass.nAmountOfTries << " times\n\n";
-				mainClass.bGuessLoop = false;
+				std::cout << "Congratulations, the number is " << mainClass.randNum << " you have tried " << mainClass.amountOfTries << " times\n\n";
+				mainClass.guessLoop = false;
 
 				/*
 				if (mainClass.amountOfTries <= "high score tries" || "high score tries" == 0)
@@ -146,14 +150,14 @@ int MainClass::singlePlayerGame()
 			}
 		}
 	}
-	return 0;
+	return;
 }
 
-int MainClass::multiPlayerGame()
+void MainClass::multiPlayerGame()
 {
 	std::cout << "Sorry, multi player is not ready yet!\n";
 	std::this_thread::sleep_for(std::chrono::milliseconds(3000));
-	return 0;
+	return;
 }
 
 void MainClass::clearScreen()

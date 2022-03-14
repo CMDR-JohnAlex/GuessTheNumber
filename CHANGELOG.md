@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.3]
+
+### Changed
+* Followed @Eisenwave 's feedback, fixed variable names, seeding and creating random engines is expensive so now I only do that once
+
+-------------------------------------------------------------------------------------------------------------
+
 ## [0.3.2]
 
 ### Changed
